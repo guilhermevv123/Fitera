@@ -1,0 +1,5 @@
+{
+  "name": "FITERA",
+  "description": "Uma aplicação web fitness gamificada com desafios, feed social, marketplace e perfil.",
+  "requestFramePermissions": []
+}

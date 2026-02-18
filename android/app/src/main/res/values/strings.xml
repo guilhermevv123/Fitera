@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">FITERA</string>
+    <string name="title_activity_main">FITERA</string>
+    <string name="package_name">com.fitera.app</string>
+    <string name="custom_url_scheme">com.fitera.app</string>
+</resources>
