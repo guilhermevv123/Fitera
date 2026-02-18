@@ -112,6 +112,12 @@ import { ref } from 'vue';
 const router = useRouter();
 const { user, updateProfile, uploadAvatar } = useApp();
 const supabase = useSupabaseClient();
+const supabaseUser = useSupabaseUser();
+
+// Ensure user.id is synced from Supabase auth
+if (supabaseUser.value) {
+  user.value.id = supabaseUser.value.id;
+}
 
 const userName = ref(user.value.name || '');
 const userCity = ref(user.value.city || '');
