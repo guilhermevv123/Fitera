@@ -1,5 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  ssr: false,
   compatibilityDate: "2024-11-01",
   future: {
     compatibilityVersion: 4,
@@ -18,8 +19,8 @@ export default defineNuxtConfig({
   },
 
   supabase: {
-    url: process.env.SUPABASE_URL || '',
-    key: process.env.SUPABASE_KEY || '',
+    url: process.env.SUPABASE_URL || 'https://placeholder.supabase.co',
+    key: process.env.SUPABASE_KEY || 'placeholder-key',
     redirectOptions: {
       login: '/auth',
       callback: '/confirm',
