@@ -5,30 +5,8 @@ const supabase = useSupabaseClient()
 const cookieName = useRuntimeConfig().public.supabase.cookieName
 const redirectPath = useCookie(`${cookieName}-redirect-path`).value || '/feed'
 
-watch(user, async () => {
-  if (user.value) {
-    useCookie(`${cookieName}-redirect-path`).value = null
-
-    // Check if profile is set up (has full_name and avatar)
-    try {
-      const { data: profile } = await supabase
-        .from('profiles')
-        .select('full_name, avatar_url, city')
-        .eq('id', user.value.id)
-        .single()
-
-      // If profile doesn't exist or is incomplete, go to setup
-      if (!profile || !profile.full_name || !profile.city) {
-        return navigateTo('/setup-profile')
-      }
-    } catch (err) {
-      // Profile table might not exist yet or user is new
-      return navigateTo('/setup-profile')
-    }
-
-    return navigateTo(redirectPath)
-  }
-}, { immediate: true })
+// O app.vue lida com a lógica global de redirecionamento baseada no estado do usuário.
+// Esta página serve apenas como o ponto de entrada para o callback do Supabase.
 </script>
 
 <template>

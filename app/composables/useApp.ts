@@ -3,7 +3,7 @@ import { MOCK_USER, MOCK_CHALLENGES, MOCK_POSTS, MOCK_WORKOUTS } from '~/utils/m
 import { getPhaseInfo } from '~/utils/levelsSystem';
 
 export const useApp = () => {
-  const user = useState<User>('user', () => MOCK_USER);
+  const user = useState<User>('user', () => ({ ...MOCK_USER, id: '' }));
   const challenges = useState<Challenge[]>('challenges', () => MOCK_CHALLENGES);
   const posts = useState<Post[]>('posts', () => []);
   const workouts = useState<WorkoutRoutine[]>('workouts', () => MOCK_WORKOUTS);
@@ -15,6 +15,8 @@ export const useApp = () => {
   // ─── User Profile ───────────────────────────────────────
 
   const fetchUserProfile = async (userId: string) => {
+    if (!userId) return null;
+
     const { data, error } = await supabase
       .from('profiles')
       .select('*')

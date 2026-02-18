@@ -246,7 +246,7 @@ const loginWithSocial = async (provider: 'google' | 'apple') => {
     const { error } = await supabase.auth.signInWithOAuth({
       provider,
       options: {
-        redirectTo: `${window.location.origin}/confirm`
+        redirectTo: `${window.location.origin}/Fitera/confirm`
       }
     });
     if (error) throw error;
